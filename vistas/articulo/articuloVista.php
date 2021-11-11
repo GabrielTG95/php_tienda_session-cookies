@@ -19,14 +19,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!--CSS y JavaScript Interno-->
     <link rel="stylesheet" href="../../content/css/style.css">
-    <script src="../../content/js/favoritos.js"></script>
-    <script src="../../content/js/visitas.js"></script>
+    <script src="/tienda/content/js/favoritos.js"></script>
+    <script src="/tienda/content/js/visitas.js"></script>
     <title>Cookies</title>
 </head>
 <body>
 <div class="container">
     <header>
-        <h1><a href="../../index.php">Práctica Cookies</a></h1>
+        <h1><a href="/tienda/index.php">Práctica Cookies</a></h1>
     </header>
     <section>
         <div class="d-flex justify-content-between flex-wrap">
