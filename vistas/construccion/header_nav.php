@@ -1,14 +1,6 @@
-<div class="d-flex justify-content-between">
-  <h1>Práctica Cookies</h1>
-  <?php
-  $sesion = false;
-  if (isset($_SESSION['login']) && $_SESSION['login'] == true){
-    $sesion = true;
-    echo '<a class="btn btn-warning">Mi Página <i class="fas fa-user"></i></a>';
-  }else{
-    echo '<button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#iniciarSesion">Iniciar Sesión <i class="fas fa-key"></i></button>';
-  }
-  ?>
+<div class="d-flex justify-content-between bg-light">
+  <h1 class="ps-3">Práctica Cookies</h1>
+
 </div>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light fs-5">
@@ -39,10 +31,52 @@
           <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
         </li>
       </ul>
-      <form class="d-flex">
+      <!--<form class="d-flex">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+      </form>-->
+
+      <?php
+      /*$sesion = false;
+      if (isset($_SESSION['login']) && $_SESSION['login'] === true){
+        $sesion = true;
+        echo '<a class="btn btn-info h-75 my-auto me-2">Mi Página <i class="fas fa-user"></i></a>';
+      }else{
+        echo '<button class="btn btn-warning h-75 my-auto me-2" data-bs-toggle="modal" data-bs-target="#iniciarSesion">Iniciar Sesión <i class="fas fa-key"></i></button>';
+        echo '<script src="/tienda/content/js/iniciarSesion.js"></script>';
+      }*/
+      ?>
+
+      <?php
+      if (isset($_SESSION['login']) && $_SESSION['login'] === true){
+        $sesion = true;
+      ?>
+        <ul class="navbar-nav mb-2 mb-lg-0">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Mi Página
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="/tienda/funciones/cerrarSesion.php">Cerrar sesión <i class="fas fa-sign-out-alt"></i></a></li>
+            </ul>
+          </li>
+        </ul>
+      <?php
+      }else{
+        //echo '<button class="btn btn-warning h-75 my-auto me-2" data-bs-toggle="modal" data-bs-target="#iniciarSesion">Iniciar Sesión <i class="fas fa-key"></i></button>';
+        //echo '<script src="/tienda/content/js/iniciarSesion.js"></script>';
+      ?>
+        <ul class="navbar-nav mb-2 mb-lg-0">
+          <li class="nav-item nav-link cursor-manita"data-bs-toggle="modal" data-bs-target="#iniciarSesion">
+            Iniciar Sesión <i class="fas fa-key"></i>
+          </li>
+        </ul>
+      <?php
+      }
+      ?>
     </div>
   </div>
 </nav>
@@ -59,16 +93,16 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true){
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form action="<?= $_SERVER['PHP_SELF'] ?>">
+          <form action="/tienda/funciones/iniciarSesion.php" method="POST">
             <div>
               <label class="form-label" for="usuario">Usuario</label>
-              <input class="form-control" type="text" id="usuario" name="usuario">
+              <input class="form-control" type="text" id="usuario" name="usuario" value="usucli01" required>
             </div>
             <div>
               <label class="form-label" for="passw">Contraseña</label>
-              <input class="form-control" type="password" id="passw" name="passw">
+              <input class="form-control" type="password" id="passw" name="passw" value="usucli01pas" required>
             </div>
-            <button class="btn btn-success mt-3 w-100">Entrar</button>
+            <button type="submit" class="btn btn-success mt-3 w-100" id="btnSesion">Entrar</button>
           </form>
         </div>
       </div>

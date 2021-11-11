@@ -36,7 +36,7 @@ COOKIES
 SESIONES
 ========
 
-1. session_start();
+1. session_start(); --> Siempre que queramos usar variables $_SESSION debemos añadirlo al compienzo de la página
 
     LEER
 
@@ -52,8 +52,8 @@ SESIONES
 
     ELIMINAR
 
-        unset($_SESSION['usuairio']);
-        destroy_session();
+        unset($_SESSION['usuario']);
+        session_destroy();
 
     ELIMINAR COOKIE DE SESIÓN
 

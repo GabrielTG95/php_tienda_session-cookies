@@ -1,0 +1,20 @@
+[
+  {
+    "id": "us0001",
+    "tipo": "cliente",
+    "usuario": "usucli01",
+    "passw": "usucli01pas"
+  },
+  {
+    "id": "us0002",
+    "tipo": "cliente",
+    "usuario": "usu2",
+    "passw": "2345"
+  },
+  {
+    "id": "ad0001",
+    "tipo": "administrador",
+    "usuario": "admin1",
+    "passw": "0987"
+  }
+]
