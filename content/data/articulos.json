@@ -2,46 +2,55 @@
   {
     "id": "art-1",
     "nombre": "Figura Deku 1",
-    "imagen": "https://ae01.alicdn.com/kf/He512a7b318e24d729640cde96855babbh.jpg_200x200.jpg_Q90.jpg"
+    "imagen": "https://ae01.alicdn.com/kf/He512a7b318e24d729640cde96855babbh.jpg_200x200.jpg_Q90.jpg",
+    "precio":56.14
   },
   {
     "id": "art-2",
     "nombre": "Figura Deku 2",
-    "imagen": "https://ae01.alicdn.com/kf/He512a7b318e24d729640cde96855babbh.jpg_200x200.jpg_Q90.jpg"
+    "imagen": "https://ae01.alicdn.com/kf/He512a7b318e24d729640cde96855babbh.jpg_200x200.jpg_Q90.jpg",
+    "precio": 56.14
   },
   {
     "id": "art-3",
     "nombre": "Figura Deku 3",
-    "imagen": "https://ae01.alicdn.com/kf/He512a7b318e24d729640cde96855babbh.jpg_200x200.jpg_Q90.jpg"
+    "imagen": "https://ae01.alicdn.com/kf/He512a7b318e24d729640cde96855babbh.jpg_200x200.jpg_Q90.jpg",
+    "precio": 56.14
   },
   {
     "id": "art-4",
     "nombre": "Figura Deku 4",
-    "imagen": "https://ae01.alicdn.com/kf/He512a7b318e24d729640cde96855babbh.jpg_200x200.jpg_Q90.jpg"
+    "imagen": "https://ae01.alicdn.com/kf/He512a7b318e24d729640cde96855babbh.jpg_200x200.jpg_Q90.jpg",
+    "precio": 56.14
   },
   {
     "id": "art-5",
     "nombre": "Figura Deku 5",
-    "imagen": "https://ae01.alicdn.com/kf/He512a7b318e24d729640cde96855babbh.jpg_200x200.jpg_Q90.jpg"
+    "imagen": "https://ae01.alicdn.com/kf/He512a7b318e24d729640cde96855babbh.jpg_200x200.jpg_Q90.jpg",
+    "precio": 56.14
   },
   {
     "id": "art-6",
     "nombre": "Figura Deku 6",
-    "imagen": "https://ae01.alicdn.com/kf/He512a7b318e24d729640cde96855babbh.jpg_200x200.jpg_Q90.jpg"
+    "imagen": "https://ae01.alicdn.com/kf/He512a7b318e24d729640cde96855babbh.jpg_200x200.jpg_Q90.jpg",
+    "precio": 56.14
   },
   {
     "id": "art-7",
     "nombre": "Figura Deku 4",
-    "imagen": "https://ae01.alicdn.com/kf/He512a7b318e24d729640cde96855babbh.jpg_200x200.jpg_Q90.jpg"
+    "imagen": "https://ae01.alicdn.com/kf/He512a7b318e24d729640cde96855babbh.jpg_200x200.jpg_Q90.jpg",
+    "precio": 56.14
   },
   {
     "id": "art-8",
     "nombre": "Figura Deku 5",
-    "imagen": "https://ae01.alicdn.com/kf/He512a7b318e24d729640cde96855babbh.jpg_200x200.jpg_Q90.jpg"
+    "imagen": "https://ae01.alicdn.com/kf/He512a7b318e24d729640cde96855babbh.jpg_200x200.jpg_Q90.jpg",
+    "precio": 56.14
   },
   {
     "id": "art-9",
     "nombre": "Figura Deku 6",
-    "imagen": "https://ae01.alicdn.com/kf/He512a7b318e24d729640cde96855babbh.jpg_200x200.jpg_Q90.jpg"
+    "imagen": "https://ae01.alicdn.com/kf/He512a7b318e24d729640cde96855babbh.jpg_200x200.jpg_Q90.jpg",
+    "precio": 56.14
   }
 ]

@@ -13,7 +13,7 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="/tienda/index.php">Inicio</a>
         </li>
-        <li class="nav-item">
+        <!--<li class="nav-item">
           <a class="nav-link" href="#">Link</a>
         </li>
         <li class="nav-item dropdown">
@@ -29,29 +29,17 @@
         </li>
         <li class="nav-item">
           <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-        </li>
+        </li>-->
       </ul>
-      <!--<form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>-->
 
-      <?php
-      /*$sesion = false;
-      if (isset($_SESSION['login']) && $_SESSION['login'] === true){
-        $sesion = true;
-        echo '<a class="btn btn-info h-75 my-auto me-2">Mi Página <i class="fas fa-user"></i></a>';
-      }else{
-        echo '<button class="btn btn-warning h-75 my-auto me-2" data-bs-toggle="modal" data-bs-target="#iniciarSesion">Iniciar Sesión <i class="fas fa-key"></i></button>';
-        echo '<script src="/tienda/content/js/iniciarSesion.js"></script>';
-      }*/
-      ?>
-
+      <ul class="navbar-nav mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="/tienda/controladores/carrito/carritoControlador.php">Carrito <i class="fas fa-shopping-cart"></i></a>
+        </li>
       <?php
       if (isset($_SESSION['login']) && $_SESSION['login'] === true){
         $sesion = true;
       ?>
-        <ul class="navbar-nav mb-2 mb-lg-0">
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Mi Página
@@ -63,20 +51,16 @@
               <li><a class="dropdown-item" href="/tienda/funciones/cerrarSesion.php">Cerrar sesión <i class="fas fa-sign-out-alt"></i></a></li>
             </ul>
           </li>
-        </ul>
       <?php
       }else{
-        //echo '<button class="btn btn-warning h-75 my-auto me-2" data-bs-toggle="modal" data-bs-target="#iniciarSesion">Iniciar Sesión <i class="fas fa-key"></i></button>';
-        //echo '<script src="/tienda/content/js/iniciarSesion.js"></script>';
       ?>
-        <ul class="navbar-nav mb-2 mb-lg-0">
           <li class="nav-item nav-link cursor-manita"data-bs-toggle="modal" data-bs-target="#iniciarSesion">
             Iniciar Sesión <i class="fas fa-key"></i>
           </li>
-        </ul>
       <?php
       }
       ?>
+      </ul>
     </div>
   </div>
 </nav>
