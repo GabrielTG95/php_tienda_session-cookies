@@ -1,36 +1,40 @@
 body{
-    background: linear-gradient(165deg, rgba(201,255,191,1) 0%, rgba(234,191,255,1) 58%, rgba(255,235,191,1) 96%) fixed;
+  background: linear-gradient(165deg, rgba(201,255,191,1) 0%, rgba(234,191,255,1) 58%, rgba(255,235,191,1) 96%) fixed;
 }
 
 .container{
-    min-height: 100vh;
+  min-height: 100vh;
 }
 
 .ocultar{
-    display: none;
+  display: none;
 }
 
 .politica{
-    clear: both;
-    position: relative;
-    height: 200px;
-    margin-top: -200px;
+  clear: both;
+  position: relative;
+  height: 200px;
+  margin-top: -200px;
+}
+
+.articulos-carrito img{
+  height: 8vw;
 }
 
 .favorito{
-    color: red;
-    cursor: pointer;
+  color: red;
+  cursor: pointer;
 }
 
 iframe{
-    width: 100%;
-    height: 35vh;
-    border: 1px solid black;
+  width: 100%;
+  height: 35vh;
+  border: 1px solid black;
 }
 
 /*============*/
 
 .cursor-manita{
-    cursor: pointer;
+  cursor: pointer;
 }
 
