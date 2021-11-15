@@ -16,7 +16,17 @@
   <section>
     <h2 class="text-center">Carrito</h2>
     <div>
-      <?= mostrarCarrito() ?>
+      <?php
+      if (isset($_REQUEST['formulario'])
+        && isset($_SESSION['login']) && $_SESSION['login'] === true
+        && isset($_SESSION['carrito']) && !empty($_SESSION['carrito'])){
+        carritoFormulario();
+      }else if(isset($_REQUEST['pago'])){
+        mostrarPago();
+      }else{
+        mostrarCarrito();
+      }
+      ?>
     </div>
   </section>
 </div>

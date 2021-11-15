@@ -24,7 +24,7 @@ if ((isset($_POST['usuario']) && !empty($_POST['usuario'])) && (isset($_POST['pa
       session_start();
       $_SESSION['usuario'] = $usuario;
       $_SESSION['login'] = true;
-      header("Location: /tienda/index.php");
+      header("Location: ".$_REQUEST['origen']);
     }else{
       header("Location: /tienda/controladores/usuario/inicioSesionControlador.php?error");
     }

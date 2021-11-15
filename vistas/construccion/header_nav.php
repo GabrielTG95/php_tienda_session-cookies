@@ -79,7 +79,7 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true){
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form action="/tienda/funciones/iniciarSesion.php" method="POST">
+          <form action="/tienda/funciones/iniciarSesion.php?origen=<?= $_SERVER['PHP_SELF'] ?>" method="POST">
             <div>
               <label class="form-label" for="usuario">Usuario</label>
               <input class="form-control" type="text" id="usuario" name="usuario" value="usucli01" required>
