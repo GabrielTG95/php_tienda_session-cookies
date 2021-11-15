@@ -1,5 +1,6 @@
 <?php
 session_start();
+include 'getDatosJson.php';
 switch ($_REQUEST['accion']){
   case 'restar':
     if ($_SESSION['carrito'][$_REQUEST['id']] > 1){
@@ -13,7 +14,16 @@ switch ($_REQUEST['accion']){
     break;
 }
 
+$articulos = datosJson('../content/data/articulos.json');
+$articulo = datosArticulo($articulos, 'id', $_REQUEST['id']);
+$precio = round($articulo['precio'] * $_SESSION['carrito'][$_REQUEST['id']], 2);
+
 header('Content-type: application/json');
-$respuesta = ["error" => "0", "descripcion" => "no ha podido borrarse el artículo", "cantidad" => $_SESSION['carrito'][$_REQUEST['id']]];
+$respuesta = [
+    "error" => "0",
+    "descripcion" => "no ha podido borrarse el artículo",
+    "cantidad" => $_SESSION['carrito'][$_REQUEST['id']],
+    "precio" => $precio
+  ];
 
 echo json_encode($respuesta);

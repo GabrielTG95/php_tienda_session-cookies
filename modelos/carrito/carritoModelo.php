@@ -2,10 +2,12 @@
 include '../../funciones/getDatosJson.php';
 function mostrarCarrito(){
   if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0){
+    $total = 0;
     $articulos = datosJson('../../content/data/articulos.json');
     echo '<div>';
     foreach ($_SESSION['carrito'] as $producto => $cantidad){
       $articulo = datosArticulo($articulos, 'id', $producto);
+      $total += $articulo['precio'] * $cantidad;
 ?>
       <div class="row border border-2 w-75 mx-auto my-2 articulos-carrito py-3">
         <div class="col-7">
@@ -18,13 +20,11 @@ function mostrarCarrito(){
             <p class="w-50 d-inline" id="cantidad_<?= $producto ?>"><?= $cantidad ?></p>
             <button class="w-25 p-0 btn btn-secondary aumentarCantidad" data-id="<?= $producto ?>">+</button>
           </div>
-          <!--<input class="form-control" type="number" step="0" min="1" value="<?php //$cantidad ?>">--->
         </div>
         <div class="col-2 my-auto">
           <div>
-            <p class="w-50 d-inline" id="precio_<?= $producto ?>"><?= $articulo['precio'] * $cantidad ?>€</p>
+            <p class="w-50 d-inline precio" id="precio_<?= $producto ?>"><?= $articulo['precio'] * $cantidad ?>€</p>
           </div>
-          <!--<input class="form-control" type="number" step="0" min="1" value="<?php //$cantidad ?>">--->
         </div>
         <div class="col-1 my-auto">
           <button class="eliminarProducto btn btn-danger" data-id="<?= $producto ?>"><i class="fas fa-trash-alt"></i></button>
@@ -32,10 +32,13 @@ function mostrarCarrito(){
       </div>
 <?php
     }
-    echo '</div>';
 ?>
+    </div>
+    <div class="w-75 mx-auto">
+      <p class="text-end" id="total">Total: <?= $total ?>€</p>
+    </div>
     <div class="text-center">
-      <a class="btn btn-primary w-25" href="/tienda/index.php" alt=""><i class="fas fa-arrow-alt-circle-left"></i> Seguir Comprando</a>
+      <a class="btn btn-primary w-25" href="/tienda/index.php" alt="">Seguir Comprando <i class="fas fa-shopping-bag"></i></a>
       <button class="btn btn-success w-25">Continuar <i class="fas fa-arrow-circle-right"></i></button>
     </div>
 <?php
