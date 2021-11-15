@@ -8,12 +8,17 @@ function mostrarCarrito(){
       $articulo = datosArticulo($articulos, 'id', $producto);
 ?>
       <div class="row border border-2 w-75 mx-auto my-2 articulos-carrito py-3">
-        <div class="col-10">
+        <div class="col-9">
           <img class="me-3" src="<?= $articulo['imagen'] ?>" alt="Imágen del artículo '<?= $articulo['nombre'] ?>'">
           <p class="d-inline"><?= $articulo['nombre'] ?></p>
         </div>
-        <div class="col-1 my-auto">
-          <input class="form-control" type="number" step="0" min="1" value="<?= $cantidad ?>">
+        <div class="col-2 my-auto">
+          <div>
+            <button class="w-25 p-0 btn btn-secondary disminuirCantidad" data-id="<?= $producto ?>">-</button>
+            <p class="w-50 d-inline" id="cantidad_<?= $producto ?>"><?= $cantidad ?></p>
+            <button class="w-25 p-0 btn btn-secondary aumentarCantidad" data-id="<?= $producto ?>">+</button>
+          </div>
+          <!--<input class="form-control" type="number" step="0" min="1" value="<?php //$cantidad ?>">--->
         </div>
         <div class="col-1 my-auto">
           <button class="eliminarProducto btn btn-danger" data-id="<?= $producto ?>"><i class="fas fa-trash-alt"></i></button>

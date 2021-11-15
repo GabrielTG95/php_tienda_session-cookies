@@ -5,6 +5,7 @@
   <!--Script Interno-->
   <script src="/tienda/content/js/favoritos.js"></script>
   <script src="/tienda/content/js/carritoBorrar.js"></script>
+  <script src="/tienda/content/js/carritoCantidad.js"></script>
   <title>Tienda</title>
 </head>
 <body>
