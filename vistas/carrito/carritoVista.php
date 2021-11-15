@@ -4,6 +4,7 @@
   <?php include '../../vistas/construccion/head.php'; ?>
   <!--Script Interno-->
   <script src="/tienda/content/js/favoritos.js"></script>
+  <script src="/tienda/content/js/carritoBorrar.js"></script>
   <title>Tienda</title>
 </head>
 <body>
