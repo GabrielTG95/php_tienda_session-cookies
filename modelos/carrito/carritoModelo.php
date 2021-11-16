@@ -63,10 +63,11 @@ function mostrarCarrito(){
 
 function carritoFormulario(){
   ?>
+  <script src="/tienda/content/js/selects-anidados.js"></script>
   <div class="w-75 mx-auto">
     <h3 class="text-center">Formulario</h3>
-    <script src="/tienda/content/js/validadorCuestionario.js"></script>
-    <form action="<?= $_SERVER['PHP_SELF'].'?pago' ?>" method="POST" class="my-4">
+    <script src="/tienda/content/js/carritoValidar.js"></script>
+    <form action="/tienda/funciones/carritoValidar.php" method="POST" class="my-4">
       <div class="row">
         <div class="col-4">
           <label class="form-label" for="nombre">Nombre</label>
@@ -110,34 +111,37 @@ function carritoFormulario(){
       <div class="row">
         <div class="col-6">
           <label class="form-label" for="pais">País</label>
-          <select class="form-select" name="pais" id="pais" aria-label="Default select example" required>
-            <option value="">Open this select menu</option>
-            <option value="España">España</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-          </select>
+          <input class="form-control" list="paisl" name="pais" id="pais"
+                 value="<?php /*if (!empty($valoresAnteriores["pais"])) {echo $valoresAnteriores["pais"];}*/ ?>" required>
+          <datalist id="paisl"></datalist>
         </div>
         <div class="col-6">
           <label class="form-label" for="provincia">Provincia</label>
-          <select class="form-select" name="provincia" id="provincia" aria-label="Default select example" required>
-            <option value="">Open this select menu</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-          </select>
+          <input class="form-control" list="provincial" name="provincia" id="provincia"
+                 value="<?php /*if (!empty($valoresAnteriores["provincia"])) {echo $valoresAnteriores["provincia"];}*/ ?>" required>
+          <datalist id="provincial"></datalist>
         </div>
       </div>
       <div class="row">
-        <div class="col-6">
+        <div class="col-4">
           <label class="form-label" for="isla">Isla</label>
-          <select class="form-select" name="isla" id="isla" aria-label="Default select example" required>
-            <option value="">Open this select menu</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
+          <select class="form-select" name="isla" id="isla" disabled required>
+            <option value="">Escoja una provincia</option>
+            <?php
+            //if(!empty($valoresAnteriores["isla"])){echo '<option value="'.$valoresAnteriores["isla"].'" selected>'. ucfirst($valoresAnteriores["isla"]).'</option>';}
+            ?>
           </select>
         </div>
-        <div class="col-6">
+        <div class="col-4">
+          <label class="form-label" for="municipio">Municipio</label>
+          <select class="form-select" name="municipio" id="municipio" disabled required>
+            <option value="">Escoja una provincia</option>
+            <?php
+            //if(!empty($valoresAnteriores["municipio"])){echo '<option value="'.$valoresAnteriores["municipio"].'" selected>'. ucfirst($valoresAnteriores["municipio"]).'</option>';}
+            ?>
+          </select>
+        </div>
+        <div class="col-4">
           <label class="form-label" for="localidad">Localidad</label>
           <input class="form-control" name="localidad" id="localidad" type="text"
                  pattern="^([a-zA-ZÀ-ÿ\u00f1\u00d1]+\s*)+$" data-type="direccion"
@@ -157,13 +161,13 @@ function carritoFormulario(){
         <div class="col-6">
           <label class="form-label" for="direccion">Dirección</label>
           <input class="form-control" name="direccion" id="direccion" type="text"
-                 pattern="^([a-zA-ZÀ-ÿ\u00f1\u00d1]+\s*)+" data-type="direccion"
+                 pattern="^([a-zA-ZÀ-ÿ\u00f1\u00d1]+\s*)+$" data-type="direccion"
                  onkeyup="validarRegExp($(this))" required>
         </div>
         <div class="col-3">
           <label class="form-label" for="portal">Portal</label>
           <input class="form-control" name="portal" id="portal" type="text"
-                 pattern="^([a-zA-ZÀ-ÿ\u00f1\u00d1]+\s*)+" data-type="direccion"
+                 pattern="^([0-9a-zA-ZÀ-ÿ\u00f1\u00d1]+\s*)+$" data-type="direccion"
                  onkeyup="validarRegExp($(this))">
         </div>
       </div>
