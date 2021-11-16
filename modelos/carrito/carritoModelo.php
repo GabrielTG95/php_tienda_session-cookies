@@ -65,59 +65,141 @@ function carritoFormulario(){
   ?>
   <div class="w-75 mx-auto">
     <h3 class="text-center">Formulario</h3>
-    <script src="/tienda/content/js/validadorRegExp.js"></script>
-    <form action="<?= $_SERVER['PHP_SELF'].'?pago' ?>" method="POST">
-      <div>
-        <label class="form-label" for="">Nombre</label>
-        <input class="form-control" type="text" pattern="^[a-zA-Z]+$" onkeydown="validarRegExp($(this))" required>
+    <script src="/tienda/content/js/validadorCuestionario.js"></script>
+    <form action="<?= $_SERVER['PHP_SELF'].'?pago' ?>" method="POST" class="my-4">
+      <div class="row">
+        <div class="col-4">
+          <label class="form-label" for="nombre">Nombre</label>
+          <input class="form-control" name="nombre" id="nombre" type="text"
+                 pattern="^[a-zA-ZÀ-ÿ\u00f1\u00d1]+$" data-type="palabra"
+                 onkeyup="validarRegExp($(this))" required>
+        </div>
+        <div class="col-4">
+          <label class="form-label" for="apellido1">Primer Apellido</label>
+          <input class="form-control" name="apellido1" id="apellido1" type="text"
+                 pattern="^[a-zA-ZÀ-ÿ\u00f1\u00d1]+$" data-type="palabra"
+                 onkeyup="validarRegExp($(this))" required>
+        </div>
+        <div class="col-4">
+          <label class="form-label" for="apellido2">Segundo Apellido</label>
+          <input class="form-control" name="apellido2" id="apellido2" type="text"
+                 pattern="^[a-zA-ZÀ-ÿ\u00f1\u00d1]+$" data-type="palabra"
+                 onkeyup="validarRegExp($(this))" required>
+        </div>
       </div>
-      <div>
-        <label class="form-label" for="">Primer Apellido</label>
-        <input class="form-control" type="text">
+      <div class="row">
+        <div class="col-4">
+          <label class="form-label" for="telefono">Nº de Teléfono</label>
+          <input class="form-control" name="telefono" id="telefono" type="text"
+                 pattern="^[0-9]{9}$" data-type="telefono"
+                 onkeyup="validarRegExp($(this))" required>
+        </div>
+        <div class="col-4">
+          <label class="form-label" for="telefonoAlt">Nº de Teléfono Alternativo</label>
+          <input class="form-control" name="telefonoAlt" id="telefonoAlt" type="text"
+                 pattern="^[0-9]{9}$" data-type="telefono"
+                 onkeyup="validarRegExp($(this))">
+        </div>
+        <div class="col-4">
+          <label class="form-label" for="email">Correo Electrónico</label>
+          <input class="form-control" name="email" id="email" type="text"
+                 pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" data-type="email"
+                 onkeyup="validarRegExp($(this))" required>
+        </div>
       </div>
-      <div>
-        <label class="form-label" for="">Segundo Apellido</label>
-        <input class="form-control" type="text">
+      <div class="row">
+        <div class="col-6">
+          <label class="form-label" for="pais">País</label>
+          <select class="form-select" name="pais" id="pais" aria-label="Default select example" required>
+            <option value="">Open this select menu</option>
+            <option value="España">España</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
+        </div>
+        <div class="col-6">
+          <label class="form-label" for="provincia">Provincia</label>
+          <select class="form-select" name="provincia" id="provincia" aria-label="Default select example" required>
+            <option value="">Open this select menu</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
+        </div>
       </div>
-      <div>
-        <label class="form-label" for="">Nº de Teléfono</label>
-        <input class="form-control" type="text">
+      <div class="row">
+        <div class="col-6">
+          <label class="form-label" for="isla">Isla</label>
+          <select class="form-select" name="isla" id="isla" aria-label="Default select example" required>
+            <option value="">Open this select menu</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
+        </div>
+        <div class="col-6">
+          <label class="form-label" for="localidad">Localidad</label>
+          <input class="form-control" name="localidad" id="localidad" type="text"
+                 pattern="^([a-zA-ZÀ-ÿ\u00f1\u00d1]+\s*)+$" data-type="direccion"
+                 onkeyup="validarRegExp($(this))" required>
+        </div>
       </div>
-      <div>
-        <label class="form-label" for="">Correo Electrónico</label>
-        <input class="form-control" type="text">
+      <div class="row">
+        <div class="col-3">
+          <label class="form-label" for="via">Tipo de vía</label>
+          <select class="form-select" name="via" id="via" aria-label="Default select example" required>
+            <option value="">Open this select menu</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
+        </div>
+        <div class="col-6">
+          <label class="form-label" for="direccion">Dirección</label>
+          <input class="form-control" name="direccion" id="direccion" type="text"
+                 pattern="^([a-zA-ZÀ-ÿ\u00f1\u00d1]+\s*)+" data-type="direccion"
+                 onkeyup="validarRegExp($(this))" required>
+        </div>
+        <div class="col-3">
+          <label class="form-label" for="portal">Portal</label>
+          <input class="form-control" name="portal" id="portal" type="text"
+                 pattern="^([a-zA-ZÀ-ÿ\u00f1\u00d1]+\s*)+" data-type="direccion"
+                 onkeyup="validarRegExp($(this))">
+        </div>
       </div>
-      <div>
-        <label class="form-label" for="">País</label>
-        <input class="form-control" type="text">
+      <div class="row">
+        <div class="col-3">
+          <label class="form-label" for="numero">Número</label>
+          <input class="form-control" name="numero" id="numero" type="text"
+                 pattern="^[0-9]+$" data-type="numero"
+                 onkeyup="validarRegExp($(this))">
+        </div>
+        <div class="col-3">
+          <label class="form-label" for="piso">Piso</label>
+          <input class="form-control" name="piso" id="piso" type="text"
+                 pattern="^[0-9a-zA-Z]+$" data-type="numeros y letras"
+                 onkeyup="validarRegExp($(this))">
+        </div>
+        <div class="col-3">
+          <label class="form-label" for="puerta">Puerta</label>
+          <input class="form-control" name="puerta" id="puerta" type="text"
+                 pattern="^[0-9a-zA-Z]+$" data-type="numeros y letras"
+                 onkeyup="validarRegExp($(this))">
+        </div>
+        <div class="col-3">
+          <label class="form-label" for="cPostal">Código Postal</label>
+          <input class="form-control" name="cPostal" id="cPostal" type="text"
+                 pattern="^[0-9]{5}$" data-type="codigo postal"
+                 onkeyup="validarRegExp($(this))" required>
+        </div>
       </div>
-      <div>
-        <label class="form-label" for="">Provincia</label>
-        <input class="form-control" type="text">
+      <div class="mt-2">
+        <input class="form-check-input" name="politica" id="politica" type="checkbox" required>
+        <label class="form-label" for="politica">Política de Datos</label>
       </div>
-      <div>
-        <label class="form-label" for="">Isla</label>
-        <input class="form-control" type="text">
-      </div>
-      <div>
-        <label class="form-label" for="">Localidad</label>
-        <input class="form-control" type="text">
-      </div>
-      <div>
-        <label class="form-label" for="">Dirección</label>
-        <input class="form-control" type="text">
-      </div>
-      <div>
-        <label class="form-label" for="">Código Postal</label>
-        <input class="form-control" type="text">
-      </div>
-      <div>
-        <label class="form-label" for="">Política de Datos</label>
-        <input class="form-control" type="text">
-      </div>
-      <div>
-        <label class="form-label" for="">Recibir Publicidad</label>
-        <input class="form-control" type="text">
+      <div class="mt-2">
+        <input class="form-check-input" name="publicidad" id="publicidad" type="checkbox">
+        <label class="form-label" for="publicidad">Recibir Publicidad</label>
       </div>
       <div class="text-center">
         <a class="btn btn-secondary w-25" href="<?= $_SERVER['PHP_SELF'] ?>" alt="Volver al carrito">Carrito</a>

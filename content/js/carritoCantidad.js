@@ -16,7 +16,7 @@ $(document).ready(function () {
             $total += parseFloat($precio);
           }
           $('#total').html('Total: '+($total).toFixed(2)+'€');
-        },100)
+        },25)
         $($destinoCantidad).html(data.cantidad);
         $($destinoPrecio).html(data.precio+'€');
       }
@@ -39,7 +39,7 @@ $(document).ready(function () {
             $total += parseFloat($precio);
           }
           $('#total').html('Total: '+($total).toFixed(2)+'€');
-        },100)
+        },25)
         $($destinoCantidad).html(data.cantidad);
         $($destinoPrecio).html(data.precio+'€');
       }
