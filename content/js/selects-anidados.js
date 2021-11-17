@@ -24,10 +24,10 @@ $("#pais").change(function () {
     $("#provincia").val("Escoja España");
     $("#isla").attr('disabled', true);
     $("#isla").empty();
-    $("#isla").append("<option value='base'>Escoja una provincia</option>");
+    $("#isla").append("<option value=''>Escoja una provincia</option>");
     $("#municipio").attr('disabled', true);
     $("#municipio").empty();
-    $("#municipio").append("<option value='base'>Escoja una provincia</option>");
+    $("#municipio").append("<option value=''>Escoja una provincia</option>");
     $("#localidad").attr('disabled', true);
     $("#localidad").empty();
     $("#localidad").val("Escoja un municipio");
@@ -61,8 +61,8 @@ $("#provincia").change(function () {
           let $islas = $("#isla");
           $islas.attr('disabled', false);
           $islas.empty();
-          $islas.append("<option value='base'>Escoja una isla</option>");
-          $municipios.append("<option value='base'>Escoja una isla</option>");
+          $islas.append("<option value=''>Escoja una isla</option>");
+          $municipios.append("<option value=''>Escoja una isla</option>");
           $.each(islas, function (index, isla) {
             if (isla['provincia_id'] == $provincia_id) {
               $islas.append("<option value='" + isla['nombre'] + "'>" + isla['nombre'] + "</option>");
@@ -71,11 +71,11 @@ $("#provincia").change(function () {
         });
       } else {
         $municipios.attr("disabled", false);
-        $municipios.append("<option value='base'>Escoja un municipio</option>");
+        $municipios.append("<option value=''>Escoja un municipio</option>");
         $.getJSON("/tienda/content/data/municipios.json", function (municipios) {
           $("#isla").attr('disabled', true);
           $("#isla").empty();
-          $("#isla").append("<option value='base'>Escoja una provincia</option>");
+          $("#isla").append("<option value=''>Escoja una provincia</option>");
           $.each(municipios, function (index, municipio) {
             if (municipio['provincia_id'] == $provincia_id) {
               $municipios.append("<option value='" + municipio['nombre'] + "'>" + municipio['nombre'] + "</option>");
@@ -88,7 +88,7 @@ $("#provincia").change(function () {
   }else{
     $municipios.attr("disabled", true);
     $municipios.empty();
-    $municipios.append("<option value='base'>Escoja una provincia</option>");
+    $municipios.append("<option value=''>Escoja una provincia</option>");
   }
   $('#localidad').attr('disabled', true);
   $('#localidad').val('Escoja un municipio');
@@ -102,7 +102,7 @@ $("#isla").change(function () {
     let $municipios = $("#municipio");
     $municipios.attr("disabled", false);
     $municipios.empty();
-    $municipios.append("<option value='base'>Escoja un municipio</option>");
+    $municipios.append("<option value=''>Escoja un municipio</option>");
     $('#localidad').attr('disabled', true);
     $('#localidad').val('Escoja un municipio');
     /*$.each(municipios, function (index, municipio) {

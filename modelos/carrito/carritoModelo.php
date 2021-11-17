@@ -61,9 +61,8 @@ function mostrarCarrito(){
   }
 }
 
-function carritoFormulario(){
+function carritoFormulario($post){
   ?>
-  <script src="/tienda/content/js/selects-anidados.js"></script>
   <div class="w-75 mx-auto">
     <h3 class="text-center">Formulario</h3>
     <script src="/tienda/content/js/carritoValidar.js"></script>
@@ -73,38 +72,44 @@ function carritoFormulario(){
           <label class="form-label" for="nombre">Nombre</label>
           <input class="form-control" name="nombre" id="nombre" type="text"
                  pattern="^[a-zA-ZÀ-ÿ\u00f1\u00d1]+$" data-type="palabra"
+                 value="<?= ($post === false) ? '' : $post['nombre']; ?>"
                  onkeyup="validarRegExp($(this))" required>
         </div>
         <div class="col-4">
           <label class="form-label" for="apellido1">Primer Apellido</label>
           <input class="form-control" name="apellido1" id="apellido1" type="text"
                  pattern="^[a-zA-ZÀ-ÿ\u00f1\u00d1]+$" data-type="palabra"
+                 value="<?= ($post === false) ? '' : $post['apellido1']; ?>"
                  onkeyup="validarRegExp($(this))" required>
         </div>
         <div class="col-4">
           <label class="form-label" for="apellido2">Segundo Apellido</label>
           <input class="form-control" name="apellido2" id="apellido2" type="text"
                  pattern="^[a-zA-ZÀ-ÿ\u00f1\u00d1]+$" data-type="palabra"
+                 value="<?= ($post === false) ? '' : $post['apellido2']; ?>"
                  onkeyup="validarRegExp($(this))" required>
         </div>
       </div>
       <div class="row">
         <div class="col-4">
           <label class="form-label" for="telefono">Nº de Teléfono</label>
-          <input class="form-control" name="telefono" id="telefono" type="text"
+          <input class="form-control" name="telefono" id="telefono" type="tel"
                  pattern="^[0-9]{9}$" data-type="telefono"
+                 value="<?= ($post === false) ? '' : $post['telefono']; ?>"
                  onkeyup="validarRegExp($(this))" required>
         </div>
         <div class="col-4">
           <label class="form-label" for="telefonoAlt">Nº de Teléfono Alternativo</label>
-          <input class="form-control" name="telefonoAlt" id="telefonoAlt" type="text"
+          <input class="form-control" name="telefonoAlt" id="telefonoAlt" type="tel"
                  pattern="^[0-9]{9}$" data-type="telefono"
+                 value="<?= ($post === false) ? '' : $post['telefonoAlt']; ?>"
                  onkeyup="validarRegExp($(this))">
         </div>
         <div class="col-4">
           <label class="form-label" for="email">Correo Electrónico</label>
           <input class="form-control" name="email" id="email" type="text"
                  pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" data-type="email"
+                 value="<?= ($post === false) ? '' : $post['email']; ?>"
                  onkeyup="validarRegExp($(this))" required>
         </div>
       </div>
@@ -137,7 +142,7 @@ function carritoFormulario(){
           <select class="form-select" name="municipio" id="municipio" disabled required>
             <option value="">Escoja una provincia</option>
             <?php
-            //if(!empty($valoresAnteriores["municipio"])){echo '<option value="'.$valoresAnteriores["municipio"].'" selected>'. ucfirst($valoresAnteriores["municipio"]).'</option>';}
+            if(!empty($valoresAnteriores["municipio"])){echo '<option value="'.$valoresAnteriores["municipio"].'" selected>'. ucfirst($valoresAnteriores["municipio"]).'</option>';}
             ?>
           </select>
         </div>
@@ -152,22 +157,31 @@ function carritoFormulario(){
         <div class="col-3">
           <label class="form-label" for="via">Tipo de vía</label>
           <select class="form-select" name="via" id="via" aria-label="Default select example" required>
-            <option value="">Open this select menu</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
+            <option value="">Seleccione un tipo de vía</option>
+            <option value="avenida">Avenida</option>
+            <option value="bulevar">Bulevar</option>
+            <option value="calle">Calle</option>
+            <option value="callejon">Callejón</option>
+            <option value="camino">Camino</option>
+            <option value="carretera">Carretera</option>
+            <option value="parque">Parque</option>
+            <option value="pasaje">Pasaje</option>
+            <option value="plaza">Plaza</option>
+            <option value="urbanizacion">Urbanización</option>
           </select>
         </div>
         <div class="col-6">
           <label class="form-label" for="direccion">Dirección</label>
           <input class="form-control" name="direccion" id="direccion" type="text"
                  pattern="^([a-zA-ZÀ-ÿ\u00f1\u00d1]+\s*)+$" data-type="direccion"
+                 value="<?= ($post === false) ? '' : $post['direccion']; ?>"
                  onkeyup="validarRegExp($(this))" required>
         </div>
         <div class="col-3">
           <label class="form-label" for="portal">Portal</label>
           <input class="form-control" name="portal" id="portal" type="text"
                  pattern="^([0-9a-zA-ZÀ-ÿ\u00f1\u00d1]+\s*)+$" data-type="direccion"
+                 value="<?= ($post === false) ? '' : $post['portal']; ?>"
                  onkeyup="validarRegExp($(this))">
         </div>
       </div>
@@ -176,33 +190,37 @@ function carritoFormulario(){
           <label class="form-label" for="numero">Número</label>
           <input class="form-control" name="numero" id="numero" type="text"
                  pattern="^[0-9]+$" data-type="numero"
+                 value="<?= ($post === false) ? '' : $post['numero']; ?>"
                  onkeyup="validarRegExp($(this))">
         </div>
         <div class="col-3">
           <label class="form-label" for="piso">Piso</label>
           <input class="form-control" name="piso" id="piso" type="text"
                  pattern="^[0-9a-zA-Z]+$" data-type="numeros y letras"
+                 value="<?= ($post === false) ? '' : $post['piso']; ?>"
                  onkeyup="validarRegExp($(this))">
         </div>
         <div class="col-3">
           <label class="form-label" for="puerta">Puerta</label>
           <input class="form-control" name="puerta" id="puerta" type="text"
                  pattern="^[0-9a-zA-Z]+$" data-type="numeros y letras"
+                 value="<?= ($post === false) ? '' : $post['puerta']; ?>"
                  onkeyup="validarRegExp($(this))">
         </div>
         <div class="col-3">
           <label class="form-label" for="cPostal">Código Postal</label>
           <input class="form-control" name="cPostal" id="cPostal" type="text"
                  pattern="^[0-9]{5}$" data-type="codigo postal"
+                 value="<?= ($post === false) ? '' : $post['cPostal']; ?>"
                  onkeyup="validarRegExp($(this))" required>
         </div>
       </div>
       <div class="mt-2">
-        <input class="form-check-input" name="politica" id="politica" type="checkbox" required>
+        <input class="form-check-input" name="politica" id="politica" type="checkbox" <?= ($post === false && !isset($post['politica'])) ? '' : 'checked'; ?> required>
         <label class="form-label" for="politica">Política de Datos</label>
       </div>
       <div class="mt-2">
-        <input class="form-check-input" name="publicidad" id="publicidad" type="checkbox">
+        <input class="form-check-input" name="publicidad" id="publicidad" type="checkbox" <?= ($post === false && !isset($post['publicidad'])) ? '' : 'checked'; ?>>
         <label class="form-label" for="publicidad">Recibir Publicidad</label>
       </div>
       <div class="text-center">
@@ -210,6 +228,11 @@ function carritoFormulario(){
         <button type="submit" class="btn btn-success w-25" alt="Tramitar pago">Tramitar Pago</button>
       </div>
     </form>
+
+    <script src="/tienda/content/js/selects-anidados.js"></script>
   </div>
   <?php
+  if(isset($_SESSION['post'])){
+    unset($_SESSION['post']);
+  }
 }

@@ -17,15 +17,27 @@
     <h2 class="text-center">Carrito</h2>
     <div>
       <?php
-      if (isset($_REQUEST['formulario'])
-        && isset($_SESSION['login']) && $_SESSION['login'] === true
-        && isset($_SESSION['carrito']) && !empty($_SESSION['carrito'])){
-        carritoFormulario();
-      }else if(isset($_REQUEST['pago'])){
-        mostrarPago();
+      if(isset($_REQUEST['correcto'])){
+        echo '<h3 class="text-center">Su pedido se ha procesado correctamente</h3>';
+        echo '<a class="btn btn-warning" href="/tienda/index.php">Volver a la tienda</a>';
       }else{
-        mostrarCarrito();
+        if (isset($_REQUEST['formulario'])
+          && isset($_SESSION['login']) && $_SESSION['login'] === true
+          && isset($_SESSION['carrito']) && !empty($_SESSION['carrito'])){
+          if (isset($_SESSION['post'])){
+            carritoFormulario($_SESSION['post']);
+            unset($_SESSION['post']);
+          }else{
+            carritoFormulario(false);
+          }
+
+        }else if(isset($_REQUEST['pago'])){
+          mostrarPago();
+        }else{
+          mostrarCarrito();
+        }
       }
+
       ?>
     </div>
   </section>
