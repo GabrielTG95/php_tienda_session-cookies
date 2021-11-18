@@ -78,7 +78,7 @@ $("#provincia").change(function () {
           $("#isla").append("<option value=''>Escoja una provincia</option>");
           $.each(municipios, function (index, municipio) {
             if (municipio['provincia_id'] == $provincia_id) {
-              $municipios.append("<option value='" + municipio['nombre'] + "'>" + municipio['nombre'] + "</option>");
+              $municipios.append("<option value='" + municipio['municipio_id'] + "'>" + municipio['nombre'] + "</option>");
             }
           });
 

@@ -62,6 +62,7 @@ function mostrarCarrito(){
 }
 
 function carritoFormulario($post){
+  if($post !== false){var_dump($post);}
   ?>
   <div class="w-75 mx-auto">
     <h3 class="text-center">Formulario</h3>
@@ -117,32 +118,70 @@ function carritoFormulario($post){
         <div class="col-6">
           <label class="form-label" for="pais">País</label>
           <input class="form-control" list="paisl" name="pais" id="pais"
-                 value="<?php /*if (!empty($valoresAnteriores["pais"])) {echo $valoresAnteriores["pais"];}*/ ?>" required>
+                 value="<?= ($post === false) ? '' : $post['pais']; ?>" required>
           <datalist id="paisl"></datalist>
         </div>
         <div class="col-6">
           <label class="form-label" for="provincia">Provincia</label>
           <input class="form-control" list="provincial" name="provincia" id="provincia"
-                 value="<?php /*if (!empty($valoresAnteriores["provincia"])) {echo $valoresAnteriores["provincia"];}*/ ?>" required>
+                 value="<?= ($post === false) ? '' : $post['provincia']; ?>" required>
           <datalist id="provincial"></datalist>
         </div>
       </div>
       <div class="row">
         <div class="col-4">
           <label class="form-label" for="isla">Isla</label>
-          <select class="form-select" name="isla" id="isla" disabled required>
+          <select class="form-select" name="isla" id="isla"
+                  <?= ($post === false && empty($post['provincia'])) ? '' : 'no-'; ?>disabled required>
             <option value="">Escoja una provincia</option>
             <?php
-            //if(!empty($valoresAnteriores["isla"])){echo '<option value="'.$valoresAnteriores["isla"].'" selected>'. ucfirst($valoresAnteriores["isla"]).'</option>';}
+            if($post !== false){
+              $provincias = datosJson('../../content/data/provincias.json');
+              $provinciaSel = "";
+              foreach ($provincias as $provincia){
+                if($post['provincia'] == $provincia['nombre']){
+                  $provinciaSel = $provincia['provincia_id'];
+                }
+              }
+              $islas = datosJson('../../content/data/islas.json');
+              $opciones = "";
+              foreach ($islas as $isla){
+                if ($isla['nombre'] == $post['isla']){
+                  $opciones .= '<option value="'.$isla['nombre'].'" selected>'.$isla['nombre'].'</option>';
+                }else if($isla['provincia_id'] == $provinciaSel){
+                  $opciones .= '<option value="'.$isla['nombre'].'">'.$isla['nombre'].'</option>';
+                }
+              }
+              echo $opciones;
+            }
             ?>
           </select>
         </div>
         <div class="col-4">
           <label class="form-label" for="municipio">Municipio</label>
-          <select class="form-select" name="municipio" id="municipio" disabled required>
+          <select class="form-select" name="municipio" id="municipio"
+                  <?= ($post === false && empty($post['provincia'])) ? '' : 'no-'; ?>disabled required>
             <option value="">Escoja una provincia</option>
             <?php
-            if(!empty($valoresAnteriores["municipio"])){echo '<option value="'.$valoresAnteriores["municipio"].'" selected>'. ucfirst($valoresAnteriores["municipio"]).'</option>';}
+            if($post !== false){
+              $provincias = datosJson('../../content/data/provincias.json');
+              $provinciaSel = "";
+              foreach ($provincias as $provincia){
+                if($post['provincia'] == $provincia['nombre']){
+                  $provinciaSel = $provincia['provincia_id'];
+                }
+              }
+              $municipios = datosJson('../../content/data/municipios.json');
+              $opciones = "";
+              foreach ($municipios as $municipio){
+                if ($municipio['nombre'] == $post['municipio']){
+                  $opciones .= '<option value="'.$municipio['nombre'].'" selected>'.$municipio['nombre'].'</option>';
+                }else if($municipio['provincia_id'] == $provinciaSel){
+                  $opciones .= '<option value="'.$municipio['nombre'].'">'.$municipio['nombre'].'</option>';
+                }
+              }
+              echo $opciones;
+            }
             ?>
           </select>
         </div>
@@ -150,6 +189,7 @@ function carritoFormulario($post){
           <label class="form-label" for="localidad">Localidad</label>
           <input class="form-control" name="localidad" id="localidad" type="text"
                  pattern="^([a-zA-ZÀ-ÿ\u00f1\u00d1]+\s*)+$" data-type="direccion"
+                 value="<?= ($post === false) ? '' : $post['localidad']; ?>"
                  onkeyup="validarRegExp($(this))" required>
         </div>
       </div>
@@ -157,17 +197,22 @@ function carritoFormulario($post){
         <div class="col-3">
           <label class="form-label" for="via">Tipo de vía</label>
           <select class="form-select" name="via" id="via" aria-label="Default select example" required>
-            <option value="">Seleccione un tipo de vía</option>
-            <option value="avenida">Avenida</option>
-            <option value="bulevar">Bulevar</option>
-            <option value="calle">Calle</option>
-            <option value="callejon">Callejón</option>
-            <option value="camino">Camino</option>
-            <option value="carretera">Carretera</option>
-            <option value="parque">Parque</option>
-            <option value="pasaje">Pasaje</option>
-            <option value="plaza">Plaza</option>
-            <option value="urbanizacion">Urbanización</option>
+            <?php
+            $vias = ['avenida','bulevar','calle','callejon','camino','carretera','parque','pasaje','plaza','urbanizacion'];
+            $opciones = '<option value="">Seleccione un tipo de vía</option>';
+            foreach ($vias as $via){
+              if($post !== false){
+                if($post['via'] == $via){
+                  $opciones .= '<option value="'.$via.'" selected>'.ucfirst($via).'</option>';
+                }else{
+                  $opciones .= '<option value="'.$via.'">'.ucfirst($via).'</option>';
+                }
+              }else{
+                $opciones .= '<option value="'.$via.'">'.ucfirst($via).'</option>';
+              }
+            }
+            echo $opciones;
+            ?>
           </select>
         </div>
         <div class="col-6">
@@ -216,11 +261,11 @@ function carritoFormulario($post){
         </div>
       </div>
       <div class="mt-2">
-        <input class="form-check-input" name="politica" id="politica" type="checkbox" <?= ($post === false && !isset($post['politica'])) ? '' : 'checked'; ?> required>
+        <input class="form-check-input" name="politica" id="politica" type="checkbox" <?= ($post === false || !isset($post['politica'])) ? '' : 'checked'; ?> required>
         <label class="form-label" for="politica">Política de Datos</label>
       </div>
       <div class="mt-2">
-        <input class="form-check-input" name="publicidad" id="publicidad" type="checkbox" <?= ($post === false && !isset($post['publicidad'])) ? '' : 'checked'; ?>>
+        <input class="form-check-input" name="publicidad" id="publicidad" type="checkbox" <?= ($post === false || !isset($post['publicidad'])) ? '' : 'checked'; ?>>
         <label class="form-label" for="publicidad">Recibir Publicidad</label>
       </div>
       <div class="text-center">
