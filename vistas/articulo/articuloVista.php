@@ -4,6 +4,7 @@
   <?php include '../../vistas/construccion/head.php'; ?>
   <!--Script Interno-->
   <script src="/tienda/content/js/favoritos.js"></script>
+  <script src="/tienda/content/js/carritoMeter.js"></script>
   <title>Tienda</title>
 </head>
 <body>
@@ -13,7 +14,7 @@
     </header>
     <section>
         <div class="d-flex justify-content-between flex-wrap">
-            <h2><?= getArtInfo()['nombre'] . ' ' . mostrarFavorito() ?></h2>
+            <h2 class="ps-5"><?= getArtInfo()['nombre'] ?> <?= mostrarFavorito() ?></h2>
             <div class="row">
                 <div class="col-lg-3 col-md-4 text-center">
                     <img src="<?= getArtInfo()['imagen'] ?>" alt="Imagen del artículo">
@@ -46,6 +47,7 @@
                         quis tortor tempor dapibus vel nec nibh.
                     </p>
                 </div>
+              <button class="btn btn-outline-success w-25 mx-auto carrito" data-id="<?= getArtInfo()['id'] ?>">Añadir <i class="fas fa-cart-plus"></i></button>
             </div>
         </div>
     </section>

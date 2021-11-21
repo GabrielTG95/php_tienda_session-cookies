@@ -36,6 +36,16 @@ function mostrarCarrito(){
     </div>
     <div class="w-75 mx-auto">
       <p class="text-end" id="total">Total: <?= $total ?>€</p>
+      <?php
+      $envio = 0;
+      if ($total < 500){
+        foreach ($_SESSION['carrito'] as $producto => $cantidad) {
+          $articulo = datosArticulo($articulos, 'id', $producto);
+          $envio += ($articulo['precio'] * 0.1) * $cantidad;
+        }
+      }
+      ?>
+      <p class="text-end" id="envio">Envío: <?= ($envio ===  0) ? 'Gratis': round($envio,2).'€' ?></p>
     </div>
     <div class="text-center">
       <a class="btn btn-primary w-25" href="/tienda/index.php" alt="">Seguir Comprando <i class="fas fa-shopping-bag"></i></a>

@@ -4,6 +4,8 @@ $(document).ready(function () {
     $.get($url, function (data) {
       if (data.error != 0) {
         alert(data.descripcion);
+      }else{
+        $('#totalCarrito').html('('+data.cantidad+')');
       }
     });
   });

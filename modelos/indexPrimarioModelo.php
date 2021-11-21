@@ -25,7 +25,7 @@ function obtenerProducto()
           </div>
           <div class="card-footer d-flex justify-content-between">
             <p class="precio">Precio:<br><?= $articulo['precio'] ?>€</p>
-            <p class="btn btn-outline-success cursor-manita my-auto carrito" data-id="<?= $articulo['id'] ?>">Añadir <i class="fas fa-cart-plus"></i></p>
+            <button class="btn btn-outline-success my-auto carrito" data-id="<?= $articulo['id'] ?>">Añadir <i class="fas fa-cart-plus"></i></button>
           </div>
         </div>
         <?php

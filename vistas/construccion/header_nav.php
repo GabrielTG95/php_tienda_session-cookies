@@ -14,28 +14,26 @@
           <a class="nav-link active" aria-current="page" href="/tienda/index.php">Inicio</a>
         </li>
         <li class="nav-item nav-link cursor-manita" id="limpiarSesion">Limpiar Sesion</li>
-        <!--<li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-        </li>-->
       </ul>
 
       <ul class="navbar-nav mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" href="/tienda/controladores/carrito/carritoControlador.php">Carrito <i class="fas fa-shopping-cart"></i></a>
+          <a class="nav-link" href="/tienda/controladores/carrito/carritoControlador.php">
+            Carrito
+            <i class="fas fa-shopping-cart"></i>
+            <span id="totalCarrito">
+              <?php
+              if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0){
+                $totalProductos = 0;
+                foreach ($_SESSION['carrito'] as $producto => $cantidad) {
+                  $totalProductos += $cantidad;
+                }
+                echo '('.$totalProductos.')';
+              }
+              ?>
+            </span>
+
+          </a>
         </li>
       <?php
       if (isset($_SESSION['login']) && $_SESSION['login'] === true){

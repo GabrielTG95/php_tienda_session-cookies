@@ -16,9 +16,15 @@ $(document).ready(function () {
             $total += parseFloat($precio);
           }
           $('#total').html('Total: '+($total).toFixed(2)+'€');
+          if($total < 500){
+            $('#envio').html('Envío: '+($total * 0.1).toFixed(2)+'€');
+          }else{
+            $('#envio').html('Envío: Gratis');
+          }
         },25)
         $($destinoCantidad).html(data.cantidad);
         $($destinoPrecio).html(data.precio+'€');
+        $('#totalCarrito').html('('+data.carrito+')');
       }
     });
   });
@@ -39,9 +45,15 @@ $(document).ready(function () {
             $total += parseFloat($precio);
           }
           $('#total').html('Total: '+($total).toFixed(2)+'€');
+          if($total < 500){
+            $('#envio').html('Envío: '+($total * 0.1).toFixed(2)+'€');
+          }else{
+            $('#envio').html('Envío: Gratis');
+          }
         },25)
         $($destinoCantidad).html(data.cantidad);
         $($destinoPrecio).html(data.precio+'€');
+        $('#totalCarrito').html('('+data.carrito+')');
       }
     });
   });
