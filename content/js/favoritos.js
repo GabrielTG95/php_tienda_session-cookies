@@ -5,6 +5,8 @@ $(document).ready(function () {
     $.get($url, function (data) {
       if (data.error != 0) {
         alert("Ha habido un error al registrar el favorito");
+      }else{
+        $('#frameFavoritos').attr('src', $('iframe').attr('src'));
       }
     });
   });

@@ -16,6 +16,8 @@
     <div class="d-flex justify-content-between flex-wrap">
       <?php obtenerProducto(); ?>
     </div>
+    <iframe src="/tienda/vistas/favoritos.php" class="my-4" id="frameFavoritos"></iframe>
+    <iframe src="/tienda/vistas/visitados.php"></iframe>
   </section>
 </div>
 </body>

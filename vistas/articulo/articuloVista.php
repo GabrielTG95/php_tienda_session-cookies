@@ -5,6 +5,16 @@
   <!--Script Interno-->
   <script src="/tienda/content/js/favoritos.js"></script>
   <script src="/tienda/content/js/carritoMeter.js"></script>
+  <script>
+    $(document).ready(function(){
+      $url = '/tienda/funciones/setvisitas.php?id=' + '<?= $_REQUEST['id'] ?>';
+      $.get($url, function(data){
+        if (data.error != 0) {
+          alert("Ha habido un error al registrar la visita");
+        }
+      });
+    });
+  </script>
   <title>Tienda</title>
 </head>
 <body>
